@@ -1,0 +1,31 @@
+@import '../../../styles/custom';
+@import '../../../styles/styles';
+
+:host {
+    width: 300px;
+    height: calc(100% - 200px);
+    position: relative;
+
+    .rates-list__wrapper {
+        @include full-size;
+
+        .rates-list__scroll-view-port {
+            height: 100%;
+        }
+
+        mat-list {
+            @include full-size;
+            overflow-y: auto;
+        }
+
+        .rates-list__no-result {
+            position: absolute;
+            top: 0;
+            font-size: 20px;
+        }
+    }
+
+    .rates-list__item-wrapper {
+        @include full-size;
+    }
+}

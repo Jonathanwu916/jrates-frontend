@@ -1,0 +1,20 @@
+<div class="rates-list__wrapper">
+    <mat-list>
+        <cdk-virtual-scroll-viewport
+            class="rates-list__scroll-view-port"
+            [itemSize]="ITEM_SIZE"
+            [minBufferPx]="MIN_BUFFER_PX"
+            [maxBufferPx]="MAX_BUFFER_PX"
+        >
+            <mat-list-item *cdkVirtualFor="let item of rates$ | async | keyvalue">
+                <div class="rates-list__item-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>{{ item.key }}</div>
+                    <div>{{ item.value | number: '1.5-5' }}</div>
+                </div>
+            </mat-list-item>
+        </cdk-virtual-scroll-viewport>
+    </mat-list>
+    <div class="rates-list__no-result" [style.visibility]="(rates$ | async) ? 'hidden' : 'visible'">
+        Result not Found
+    </div>
+</div>

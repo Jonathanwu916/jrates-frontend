@@ -1,0 +1,15 @@
+.currency-selector__scroll-viewport {
+    height: 256px;
+}
+
+input.mat-input-element {
+    padding-left: 20px;
+}
+
+:host {
+    .currency-selector__one {
+        font-size: 25px;
+        top: -25px;
+        position: absolute;
+    }
+}

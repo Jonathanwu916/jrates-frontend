@@ -1,0 +1,11 @@
+<div class="rates__wrapper" fxLayout="column" fxLayoutAlign="start center">
+    <app-currency-selector
+        defaultSelection="NZD"
+        prefix="1"
+        label="Base Currency"
+        [isPrefixVisible]="true"
+        (selectedCurrency)="updateRatesByBaseCurrency($event)"
+    >
+    </app-currency-selector>
+    <app-rates-list [rates$]="rates$"></app-rates-list>
+</div>
