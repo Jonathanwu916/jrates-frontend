@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {BehaviorSubject, combineLatest, Observable, of} from 'rxjs';
-import {catchError, distinctUntilChanged, map, switchMap, take} from 'rxjs/operators';
+import {catchError, distinctUntilChanged, map, switchMap} from 'rxjs/operators';
 import {CurrencyService} from '../services/currency.service';
 
 @Component({
@@ -15,7 +15,6 @@ export class ConverterComponent implements OnInit {
     fromCurrency$: BehaviorSubject<string> = new BehaviorSubject<string>('');
     toCurrency$: BehaviorSubject<string> = new BehaviorSubject<string>('');
     inputAmount$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
-
     result$!: Observable<Optional<string>>;
 
     ngOnInit(): void {
