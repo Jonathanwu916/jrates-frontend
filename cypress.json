@@ -1,0 +1,5 @@
+{
+    "$schema": "https://on.cypress.io/cypress.schema.json",
+    "chromeWebSecurity": false,
+    "baseUrl": "http://localhost:4200"
+}
