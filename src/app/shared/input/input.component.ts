@@ -7,19 +7,19 @@ import {Component, OnInit, ChangeDetectionStrategy, Attribute, Output, EventEmit
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent implements OnInit {
-    constructor(@Attribute('label') label: string) {
+    constructor(@Attribute('label') label: string, @Attribute('defaultInput') defaultInput: Optional<string | number>) {
         this.label = label;
+        this.defaultInput = defaultInput;
     }
-
-    private readonly INITIAL_INPUT_VALUE = 1;
 
     @Output() inputOutcome: EventEmitter<string | number> = new EventEmitter<string | number>();
 
     label: string;
-    inputValue!: number;
+    defaultInput: Optional<string | number>;
+    inputValue!: number | string;
 
     ngOnInit(): void {
-        this.inputValue = this.INITIAL_INPUT_VALUE;
+        this.inputValue = this.defaultInput ? this.defaultInput : '';
         this.updateInputValue(this.inputValue);
     }
 

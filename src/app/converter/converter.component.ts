@@ -14,7 +14,7 @@ export class ConverterComponent implements OnInit {
 
     fromCurrency$: BehaviorSubject<string> = new BehaviorSubject<string>('');
     toCurrency$: BehaviorSubject<string> = new BehaviorSubject<string>('');
-    inputAmount$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
+    inputAmount$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
     result$!: Observable<Optional<string>>;
 
     ngOnInit(): void {
