@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, Attribute, Input, Output, EventEmitter} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {BehaviorSubject, combineLatest, Observable, of, Subject} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map, startWith, takeUntil} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, skipUntil, startWith, takeUntil} from 'rxjs/operators';
 import {CurrencyService} from 'src/app/services/currency.service';
 
 @Component({
@@ -40,6 +40,7 @@ export class CurrencySelectorComponent implements OnInit {
     isFocused$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     private destroy$: Subject<boolean> = new Subject<boolean>();
+    private readonly INPUT_DEBOUNCE_TIME = 300;
 
     get options$(): BehaviorSubject<string[]> {
         return this.currencyService.currencyList$;
@@ -48,7 +49,7 @@ export class CurrencySelectorComponent implements OnInit {
     ngOnInit(): void {
         this.formControl = new FormControl(this.defaultSelection);
 
-        const debounceFormValueChanges = this.formControl.valueChanges.pipe(debounceTime(300));
+        const debounceFormValueChanges = this.formControl.valueChanges.pipe(debounceTime(this.INPUT_DEBOUNCE_TIME));
 
         debounceFormValueChanges
             .pipe(
@@ -58,14 +59,6 @@ export class CurrencySelectorComponent implements OnInit {
             )
             .subscribe(this.selectedCurrency);
 
-        this.filteredOptions$ = debounceFormValueChanges.pipe(
-            startWith(''),
-            distinctUntilChanged((prev, curr) => prev === curr),
-            map(value =>
-                this.options$.value.filter(rate => rate.toLowerCase().includes((value as string).toLowerCase()))
-            )
-        );
-
         this.showPrefix$ = this.isPrefixVisible
             ? combineLatest([debounceFormValueChanges.pipe(startWith(this.defaultSelection)), this.isFocused$]).pipe(
                   map(([value, isFocused]) => Boolean(value) || isFocused)
@@ -73,8 +66,20 @@ export class CurrencySelectorComponent implements OnInit {
             : of(false);
     }
 
+    private resetFilteredOptions() {
+        this.filteredOptions$ = this.formControl.valueChanges.pipe(
+            skipUntil(this.isFocused$),
+            debounceTime(this.INPUT_DEBOUNCE_TIME),
+            startWith(''),
+            distinctUntilChanged((prev, curr) => prev === curr),
+            map(value =>
+                this.options$.value.filter(rate => rate.toLowerCase().includes((value as string).toLowerCase()))
+            )
+        );
+    }
+
     onFocus($event: any) {
-        this.filteredOptions$.pipe(startWith(''));
+        this.resetFilteredOptions();
         this.isFocused$.next(true);
     }
 
