@@ -4,9 +4,7 @@ import {ApolloClientOptions, InMemoryCache} from '@apollo/client/core';
 import {HttpLink} from 'apollo-angular/http';
 import {environment} from '../environments/environment';
 
-const uri = environment.production
-    ? 'http://jrates.ap-southeast-2.elasticbeanstalk.com/graphql'
-    : 'http://localhost:5000/graphql'; // <-- add the URL of the GraphQL server here
+const uri = environment.graphqlUri; // <-- add the URL of the GraphQL server here
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     return {
