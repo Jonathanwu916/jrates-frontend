@@ -14,7 +14,7 @@
             </mat-list-item>
         </cdk-virtual-scroll-viewport>
     </mat-list>
-    <div class="rates-list__no-result" [style.visibility]="(rates$ | async) ? 'hidden' : 'visible'">
+    <div class="rates-list__no-result" [style.visibility]="(rates$ | async) || isLoading ? 'hidden' : 'visible'">
         Result not Found
     </div>
 </div>

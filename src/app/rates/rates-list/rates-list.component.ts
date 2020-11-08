@@ -9,6 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class RatesListComponent {
     @Input() rates$!: Observable<Optional<Record<string, number>>>;
+    @Input() isLoading!: boolean;
 
     readonly ITEM_SIZE = 65;
     readonly MIN_BUFFER_PX = 65 * 10;

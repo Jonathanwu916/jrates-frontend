@@ -7,5 +7,5 @@
         (selectedCurrency)="updateRatesByBaseCurrency($event)"
     >
     </app-currency-selector>
-    <app-rates-list [rates$]="rates$"></app-rates-list>
+    <app-rates-list [rates$]="rates$" [isLoading]="isLoading"></app-rates-list>
 </div>
