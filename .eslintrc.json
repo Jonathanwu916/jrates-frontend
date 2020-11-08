@@ -1,0 +1,25 @@
+{
+    "extends": "./node_modules/gts/",
+    "env": {
+        "commonjs": true,
+        "node": true,
+        "browser": true,
+        "mocha": true,
+        "jasmine": true
+    },
+    "rules": {
+        "node/no-unpublished-import": [
+            "error",
+            {
+                "allowModules": ["jasmine-marbles", "protractor"]
+            }
+        ],
+        "eqeqeq": [
+            "error",
+            "always",
+            {
+                "null": "ignore"
+            }
+        ]
+    }
+}
