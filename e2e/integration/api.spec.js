@@ -22,6 +22,7 @@ const queryRates = base => `
 }
 `;
 
+// const url = 'http://jrates.ap-southeast-2.elasticbeanstalk.com/graphql'
 const url = 'http://localhost:5000/graphql';
 
 Cypress.Commands.add('queryGQL', query => {
