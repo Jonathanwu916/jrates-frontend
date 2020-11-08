@@ -33,7 +33,7 @@ Cypress.Commands.add('queryGQL', query => {
     });
 });
 
-describe.only('GraphQL API test', () => {
+describe('GraphQL API test', () => {
     it('should successfully query currency list', () => {
         cy.queryGQL(queryCurrencyList).then(res => {
             const response = res.body.data;
