@@ -4,7 +4,10 @@
 
         .converter__result {
             font-size: 25px;
-            text-transform: uppercase;
+
+            &.result {
+                text-transform: uppercase;
+            }
         }
 
         .converter__arrow {

@@ -14,9 +14,9 @@
         </app-currency-selector>
     </div>
     <div class="converter__bottom">
-        <div class="converter__result" *ngIf="(result$ | async) != null">
+        <div class="converter__result result" *ngIf="(result$ | async) != null">
             {{ result$ | async }}
         </div>
-        <div class="converter__result" *ngIf="(result$ | async) == null">Invalid Input</div>
+        <div class="converter__result invalid" *ngIf="(result$ | async) == null">Invalid Input</div>
     </div>
 </div>
