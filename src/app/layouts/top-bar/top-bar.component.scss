@@ -1,0 +1,23 @@
+@import '../../../styles/styles';
+
+:host {
+    .top-bar__nav {
+        margin-left: 15px;
+        height: 100%;
+        color: mat-color($mat-grey, 600);
+        font-size: 18px;
+        cursor: pointer;
+
+        &.active {
+            color: mat-color($mat-grey, 100);
+        }
+
+        &.converter {
+            margin-left: 40px;
+        }
+    }
+
+    .mat-toolbar {
+        background-color: mat-color($mat-grey, 900);
+    }
+}

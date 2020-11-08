@@ -1,0 +1,9 @@
+@import '../../../styles/custom';
+
+:host {
+    @include full-size;
+
+    .app__wrapper {
+        @include full-size;
+    }
+}

@@ -1,0 +1,71 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$primary-text-color: mat-color($mat-grey, 100);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+    background-color: $black-87-opacity;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    color: $light-secondary-text;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    *:focus {
+        outline: none !important;
+    }
+
+    .mat-form-field-underline {
+        background-color: $primary-text-color !important;
+    }
+
+    .mat-form-field-label {
+        color: $primary-text-color !important;
+    }
+
+    .mat-input-element {
+        font-size: 25px;
+        text-transform: uppercase;
+        color: $primary-text-color !important;
+    }
+
+    .mat-form-field-infix {
+        width: 300px;
+    }
+
+    .mat-list-item-content {
+        color: $primary-text-color !important;
+        font-size: 25px;
+    }
+
+    .mat-list-item {
+        height: 65px !important;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        background-color: transparent;
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: mat-color($mat-grey, 900);
+        border-radius: 5px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+    }
+}
