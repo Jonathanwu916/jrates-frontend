@@ -1,6 +1,6 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {catchError, map, take} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {CurrencyService} from '../services/currency.service';
 
 @Component({

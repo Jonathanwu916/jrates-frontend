@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {GraphqlService} from './graphql.service';
 import {catchError, map} from 'rxjs/operators';
-import {Currency, CurrencyList, QueryCurrencyList, QueryExchangeRate, QueryRates} from '../models/currency.model';
+import {Currency, QueryExchangeRate, QueryRates} from '../models/currency.model';
 import {queryCurrencyList, queryLatestExchangeRate, queryLatestRatesByBaseCurrency} from './currency.gql';
+import {CurrencyList, QueryCurrencyList} from '../models/currency-list.model';
 
 @Injectable({providedIn: 'root'})
 export class CurrencyService {
