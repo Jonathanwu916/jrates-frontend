@@ -1,0 +1,17 @@
+<div class="converter__wrapper" fxLayout="column" fxLayoutAlign="center center">
+    <div class="converter__top" fxLayout="row">
+        <app-input class="converter__amount-input" label="Amount" (inputOutcome)="updateInputAmount($event)">
+        </app-input>
+        <app-currency-selector defaultSelection="NZD" label="From" (selectedCurrency)="updateFromCurrency($event)">
+        </app-currency-selector>
+        <div class="converter__arrow" fxLayout="row" fxLayoutAlign="center center">-></div>
+        <app-currency-selector defaultSelection="USD" label="To" (selectedCurrency)="updateToCurrency($event)">
+        </app-currency-selector>
+    </div>
+    <div class="converter__bottom">
+        <div class="converter__result" *ngIf="(result$ | async) != null">
+            {{ result$ | async }}
+        </div>
+        <div class="converter__result" *ngIf="(result$ | async) == null">Invalid Input</div>
+    </div>
+</div>
