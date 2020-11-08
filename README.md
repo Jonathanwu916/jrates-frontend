@@ -12,4 +12,4 @@ Run `ng build` to build the project.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm run e2e:run OR yarn e2e:run` to execute the end-to-end tests via Cypress.
