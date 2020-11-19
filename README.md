@@ -1,6 +1,6 @@
 # JratesFrontend
 
-An application to provide update-to-date currency coverter and rates list.
+An application to provide update-to-date currency coverter and rates list.\
 http://jrates.s3-website-ap-southeast-2.amazonaws.com/
 
 ## Development server
